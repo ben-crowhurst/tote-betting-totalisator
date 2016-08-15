@@ -19,8 +19,9 @@ set( CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules" 
 include( "${CMAKE_SOURCE_DIR}/cmake/manifest.cmake" )
 include_directories( ${INCLUDE_DIR} )
 
-add_executable( ${PROJECT_NAME} ${MANIFEST} )
-target_link_libraries( ${PROJECT_NAME} )
+add_library( "${PROJECT_NAME}-logic" ${MANIFEST} )
+add_executable( ${PROJECT_NAME} "${SOURCE_DIR}/main.cpp" )
+target_link_libraries( ${PROJECT_NAME} "${PROJECT_NAME}-logic" )
 
 #
 # Test
