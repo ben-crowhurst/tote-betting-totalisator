@@ -2,6 +2,7 @@
 //System Includes
 #include <vector>
 #include <stdexcept>
+#include <algorithm>
 
 //Project Includes
 #include "bet.hpp"
@@ -14,7 +15,9 @@
 #include <catch.hpp>
 
 //System Namespaces
+using std::sort;
 using std::vector;
+using std::unique;
 using std::domain_error;
 
 //Project Namespaces
@@ -86,4 +89,41 @@ TEST_CASE( "validate setting out-of-range Bet selection", "[totalisator]" )
     bets.push_back( bet );
     
     REQUIRE_THROWS_AS( totalisator->run( race, bets ), domain_error );
+}
+
+TEST_CASE( "validate Race results are not overwritten when supplied", "[totalisator]" )
+{
+    auto expectation = vector< unsigned int > { 1, 2, 3, 4 };
+    
+    Race race;
+    race.results = expectation;
+    vector< Bet > bets;
+    
+    auto totalisator = Totalisator::create( );
+    totalisator->run( race, bets );
+    
+    REQUIRE( race.results == expectation );
+}
+
+TEST_CASE( "validate Race results are randomised when not supplied", "[totalisator]" )
+{
+    Race race;
+    vector< Bet > bets;
+    
+    auto totalisator = Totalisator::create( );
+    totalisator->run( race, bets );
+    
+    auto results = race.results;
+    REQUIRE( results.size( ) == race.number_of_runners );
+    
+    auto end = results.end( );
+    sort( results.begin( ), end );
+    bool contains_duplicates = ( unique( results.begin( ), end ) not_eq end );
+    REQUIRE( contains_duplicates == false );
+    
+    race.results.clear( );
+    totalisator->run( race, bets );
+    
+    auto previous_results = results;
+    REQUIRE( race.results not_eq previous_results );
 }

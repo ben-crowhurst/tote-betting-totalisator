@@ -1,5 +1,6 @@
 
 //System Includes
+#include <random>
 #include <ciso646>
 #include <stdexcept>
 
@@ -13,7 +14,10 @@
 
 //System Namespaces
 using std::vector;
+using std::shuffle;
+using std::mt19937;
 using std::domain_error;
+using std::random_device;
 
 //Project Namespaces
 
@@ -64,7 +68,19 @@ namespace gambling
         
         void TotalisatorImpl::generate_race_results( Race& race )
         {
-        
+            if ( not race.results.empty( ) )
+            {
+                return;
+            }
+            
+            for ( unsigned int index = 1; index <= race.number_of_runners; index++ )
+            {
+                race.results.push_back( index );
+            }
+            
+            random_device device;
+            mt19937 seed( device( ) );
+            shuffle( race.results.begin( ), race.results.end( ), seed );
         }
         
         void TotalisatorImpl::calculate_dividends( Race& race, const vector< Bet >& bets )
