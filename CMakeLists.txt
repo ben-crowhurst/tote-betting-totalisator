@@ -29,8 +29,8 @@ target_link_libraries( ${PROJECT_NAME} ${PROJECT_LIBRARY_NAME} )
 # Test
 #
 enable_testing( )
-add_subdirectory( "${CMAKE_SOURCE_DIR}/test/unit" "unit-tests" )
-add_subdirectory( "${CMAKE_SOURCE_DIR}/test/integration" "integration-tests" )
+add_subdirectory( "${CMAKE_SOURCE_DIR}/test/unit" )
+add_subdirectory( "${CMAKE_SOURCE_DIR}/test/integration" )
 
 #
 # Install
