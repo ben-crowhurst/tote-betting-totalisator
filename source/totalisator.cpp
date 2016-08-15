@@ -1,3 +1,6 @@
+/*
+ * Copyright, Gambling Holdings Limited, All Rights Reserved.
+ */
 
 //System Includes
 

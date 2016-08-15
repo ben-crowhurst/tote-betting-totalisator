@@ -1,3 +1,6 @@
+/*
+ * Copyright, Gambling Holdings Limited, All Rights Reserved.
+ */
 
 #ifndef _GAMBLING_DETAIL_TOTALISATOR_IMPL_H
 #define _GAMBLING_DETAIL_TOTALISATOR_IMPL_H 1
@@ -86,6 +89,9 @@ namespace gambling
                 TotalisatorImpl( const TotalisatorImpl& original ) = delete;
                 
                 //Functionality
+                double subtract_commission( const unsigned int total, const unsigned int percentage );
+                
+                double calculate_dividend( const std::vector< Bet >& bets, const unsigned int selection, const Product product, const unsigned int commission );
                 
                 //Getters
                 

@@ -1,3 +1,6 @@
+/*
+ * Copyright, Gambling Holdings Limited, All Rights Reserved.
+ */
 
 #ifndef _GAMBLING_BET_H
 #define _GAMBLING_BET_H 1

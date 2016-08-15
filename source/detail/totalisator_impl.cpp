@@ -1,3 +1,6 @@
+/*
+ * Copyright, Gambling Holdings Limited, All Rights Reserved.
+ */
 
 //System Includes
 #include <random>
@@ -85,7 +88,50 @@ namespace gambling
         
         void TotalisatorImpl::calculate_dividends( Race& race, const vector< Bet >& bets )
         {
+            race.win_dividend = calculate_dividend( bets, race.results.front( ), WIN, m_win_commission );
+            
+            race.place_dividends.resize( m_place_winner_boundary );
+            
+            for ( unsigned int index = 0; index < m_place_winner_boundary; index++ )
+            {
+                const auto dividend = calculate_dividend( bets, race.results.at( index ), PLACE, m_place_commission );
+                race.place_dividends[ index ] = dividend / m_place_winner_boundary;
+            }
+        }
         
+        double TotalisatorImpl::subtract_commission( const unsigned int total, const unsigned int percentage )
+        {
+            const double dividend = total * percentage;
+            
+            if ( dividend <= 0 )
+            {
+                return total;
+            }
+            
+            const auto quotient = dividend / 100.0;
+            return total - quotient;
+        }
+        
+        double TotalisatorImpl::calculate_dividend( const vector< Bet >& bets, const unsigned int selection, const Product product, const unsigned int commission )
+        {
+            double pool = 0.0;
+            double winning_punters_stakes = 0.0;
+            
+            for ( const auto& bet : bets )
+            {
+                if ( bet.product == product )
+                {
+                    pool += bet.stake;
+                    
+                    if ( bet.selection == selection )
+                    {
+                        winning_punters_stakes += bet.stake;
+                    }
+                }
+            }
+            
+            pool = subtract_commission( pool, commission );
+            return pool / winning_punters_stakes;
         }
     }
 }
