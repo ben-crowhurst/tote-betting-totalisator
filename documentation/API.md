@@ -48,7 +48,7 @@ struct Race
 }
 ```
 
-Race represents a single run.
+Representation of a Race.
 
 ### Product
 
