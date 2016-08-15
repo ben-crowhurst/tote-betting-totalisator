@@ -32,6 +32,11 @@ namespace gambling
     
     void Totalisator::run( Race& race, const vector< Bet >& bets )
     {
+        if ( bets.empty( ) )
+        {
+            return;
+        }
+        
         m_pimpl->validate( race );
         m_pimpl->validate( race, bets );
         m_pimpl->generate_race_results( race );
