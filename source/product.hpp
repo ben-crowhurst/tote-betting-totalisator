@@ -3,6 +3,7 @@
 #define _GAMBLING_PRODUCT_H 1
 
 //System Includes
+#include <cstdint>
 
 //Project Includes
 
