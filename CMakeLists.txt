@@ -13,6 +13,8 @@ include( "${CMAKE_SOURCE_DIR}/cmake/configuration.cmake" )
 #
 set( CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules" )
 
+find_package( catch REQUIRED )
+
 #
 # Build
 #
@@ -26,6 +28,8 @@ target_link_libraries( ${PROJECT_NAME} "${PROJECT_NAME}-logic" )
 #
 # Test
 #
+enable_testing( )
+add_subdirectory( "${CMAKE_SOURCE_DIR}/test/unit" "unit-tests" )
 
 #
 # Install
