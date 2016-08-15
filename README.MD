@@ -20,7 +20,7 @@ make test
 
 You will now find all required components installed in the distribution folder.
 
-Please submit enhancements, proposals, and defects via the [issue](http://github.com/corvusoft/restbed/issues) tracker; Alternatively ask a question on [StackOverflow](http://stackoverflow.com/questions/ask) tagged [#restbed](http://stackoverflow.com/questions/tagged/restbed).
+Please submit enhancements, proposals, and defects via the [issue](http://github.com/corvusoft/restbed/issues) tracker.
 
 Example
 -------
@@ -59,7 +59,7 @@ Result:2:3:1
 ./totalisator < data.txt
 ```
 
-And this is output on stdout showing the dividends for the supplied race data:
+And this is the output on stdout showing the dividends for the supplied race data:
 
 ```
 Win:2:$2.61
@@ -79,6 +79,6 @@ Minimum Requirements
 Road Map
 --------
 
-| Milestone | Feature                  | Status   |
-|:---------:|:------------------------:|:--------:|
-|    1.0    | Funcationing Totalisator | complete |
+| Milestone | Feature                 | Status   |
+|:---------:|:-----------------------:|:--------:|
+|    1.0    | Functioning Totalisator | complete |
