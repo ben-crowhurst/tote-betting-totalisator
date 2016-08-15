@@ -2,6 +2,8 @@
 //System Includes
 
 //Project Includes
+#include "bet.hpp"
+#include "race.hpp"
 #include "totalisator.hpp"
 #include "detail/totalisator_impl.hpp"
 
@@ -24,5 +26,10 @@ namespace gambling
     Totalisator::~Totalisator( void )
     {
         return;
+    }
+    
+    void Totalisator::run( Race&, const Bets& )
+    {
+    
     }
 }

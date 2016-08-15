@@ -7,6 +7,7 @@
 #include <cstdint>
 
 //Project Includes
+#include "product.hpp"
 
 //External Includes
 

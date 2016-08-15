@@ -21,10 +21,10 @@ namespace gambling
     struct Race
     {
         unsigned int number_of_runners = 4;
-        vector< unsigned int > results = { };
+        std::vector< unsigned int > results = { };
         
         double win_dividend = 0.0;
-        vector< double > place_dividends = { };
+        std::vector< double > place_dividends = { };
     };
 }
 
