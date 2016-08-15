@@ -25,7 +25,7 @@ Please submit enhancements, proposals, and defects via the [issue](http://github
 Example
 -------
 
-Here is sample data.txt file for a given race. This is what the program should receive on stdin:
+Here is a sample data.txt file for a given race. This is what the program should receive on stdin:
 
 ```
 Bet:W:1:3
@@ -59,7 +59,7 @@ Result:2:3:1
 ./totalisator < data.txt
 ```
 
-And this is the output on stdout showing the dividends for the supplied race data:
+And this is the output on stdout showing the dividends for the supplied data:
 
 ```
 Win:2:$2.61
