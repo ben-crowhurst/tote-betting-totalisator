@@ -22,6 +22,7 @@
 
 //System Namespaces
 using std::cin;
+using std::stoi;
 using std::regex;
 using std::vector;
 using std::string;
@@ -65,10 +66,9 @@ Bet make_bet( const smatch& match )
 Race make_race( const smatch& match )
 {
     Race race = { };
-    race.results.push_back( 2 );
-    race.results.push_back( 3 );
-    race.results.push_back( 1 );
-    race.results.push_back( 4 );
+    race.results.push_back( stoi( match[ 1 ].str( ) ) );
+    race.results.push_back( stoi( match[ 2 ].str( ) ) );
+    race.results.push_back( stoi( match[ 3 ].str( ) ) );
     
     return race;
 }
