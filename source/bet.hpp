@@ -7,7 +7,6 @@
 #include <cstdint>
 
 //Project Includes
-#include "product.hpp"
 
 //External Includes
 
@@ -19,9 +18,12 @@
 
 namespace gambling
 {
-    struct Bet
+    //Forward Declaration
+    enum Product : uint8_t;
+    
+        struct Bet
     {
-        Product product = NONE;
+        Product product = { };
         unsigned int stake = 0;
         unsigned int selection = 0;
     };

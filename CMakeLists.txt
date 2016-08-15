@@ -21,15 +21,16 @@ find_package( catch REQUIRED )
 include( "${CMAKE_SOURCE_DIR}/cmake/manifest.cmake" )
 include_directories( ${INCLUDE_DIR} )
 
-add_library( "${PROJECT_NAME}-logic" ${MANIFEST} )
+add_library( ${PROJECT_LIBRARY_NAME} ${MANIFEST} )
 add_executable( ${PROJECT_NAME} "${SOURCE_DIR}/main.cpp" )
-target_link_libraries( ${PROJECT_NAME} "${PROJECT_NAME}-logic" )
+target_link_libraries( ${PROJECT_NAME} ${PROJECT_LIBRARY_NAME} )
 
 #
 # Test
 #
 enable_testing( )
 add_subdirectory( "${CMAKE_SOURCE_DIR}/test/unit" "unit-tests" )
+add_subdirectory( "${CMAKE_SOURCE_DIR}/test/integration" "integration-tests" )
 
 #
 # Install
