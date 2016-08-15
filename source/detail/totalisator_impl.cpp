@@ -1,5 +1,6 @@
 
 //System Includes
+#include <stdexcept>
 
 //Project Includes
 #include "bet.hpp"
@@ -10,6 +11,7 @@
 
 //System Namespaces
 using std::vector;
+using std::domain_error;
 
 //Project Namespaces
 
@@ -31,7 +33,15 @@ namespace gambling
         
         void TotalisatorImpl::validate( const Race& race )
         {
-        
+            if ( race.number_of_runners == 0 )
+            {
+                throw domain_error( "Number of runners not specified." );
+            }
+            
+            if ( m_place_winner_boundary > race.number_of_runners )
+            {
+                throw domain_error( "Place winner boundary too large, must be less then or equal too number of runners." );
+            }
         }
         
         void TotalisatorImpl::validate( const Race& race, const vector< Bet >& bets )
