@@ -22,6 +22,7 @@ using std::domain_error;
 
 //Project Namespaces
 using gambling::Bet;
+using gambling::WIN;
 using gambling::Race;
 using gambling::Product;
 using gambling::Settings;
@@ -42,9 +43,11 @@ TEST_CASE( "validate setting number of runners to zero", "[totalisator]" )
     
     Race race;
     race.number_of_runners = 0;
-    vector< Bet > bets = { };
     
-    REQUIRE_THROWS_AS( totalisator->run( race, bets ), domain_error );
+    Bet bet;
+    bet.product = WIN;
+    
+    REQUIRE_THROWS_AS( totalisator->run( race, { bet } ), domain_error );
 }
 
 TEST_CASE( "validate setting number of runners to less-than place winner boundary", "[totalisator]" )
@@ -56,9 +59,11 @@ TEST_CASE( "validate setting number of runners to less-than place winner boundar
     
     Race race;
     race.number_of_runners = 3;
-    vector< Bet > bets = { };
     
-    REQUIRE_THROWS_AS( totalisator->run( race, bets ), domain_error );
+    Bet bet;
+    bet.product = WIN;
+    
+    REQUIRE_THROWS_AS( totalisator->run( race, { bet } ), domain_error );
 }
 
 TEST_CASE( "validate setting incorrect Bet product ", "[totalisator]" )
@@ -108,7 +113,10 @@ TEST_CASE( "validate Race results are not overwritten when supplied", "[totalisa
 TEST_CASE( "validate Race results are randomised when not supplied", "[totalisator]" )
 {
     Race race;
-    vector< Bet > bets;
+    
+    Bet bet;
+    bet.product = WIN;
+    vector< Bet > bets = { bet };
     
     auto totalisator = Totalisator::create( );
     totalisator->run( race, bets );
