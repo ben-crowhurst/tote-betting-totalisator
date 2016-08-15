@@ -3,6 +3,7 @@
 #define _GAMBLING_TOTALISATOR_H 1
 
 //System Includes
+#include <vector>
 #include <memory>
 
 //Project Includes
@@ -18,10 +19,11 @@
 namespace gambling
 {
     //Forward Declarations
+    struct Bet;
+    struct Race;
+    
     namespace detail
     {
-        struct Race;
-        struct Bets;
         class TotalisatorImpl;
     }
     
@@ -38,7 +40,7 @@ namespace gambling
             virtual ~Totalisator( void );
             
             //Functionality
-            void run( Race& race, const Bets& bets );
+            void run( Race& race, const std::vector< Bet >& bets );
             
             //Getters
             

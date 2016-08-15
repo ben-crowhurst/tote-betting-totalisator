@@ -25,8 +25,6 @@ namespace gambling
         unsigned int stake = 0;
         unsigned int selection = 0;
     };
-    
-    typedef std::vector< Bet > Bets;
 }
 
 #endif  /* _GAMBLING_BET_H */
