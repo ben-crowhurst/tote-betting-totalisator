@@ -74,6 +74,7 @@ Minimum Requirements
 | Resource | Requirement                  |
 |:--------:|:----------------------------:|
 | Compiler |   C++11 compliant or above   |
+|  CMake   |       2.8.10 or above        |
 |    OS    | BSD, Linux, Mac OSX, Windows |
 
 Road Map
