@@ -6,6 +6,7 @@
 #include <random>
 #include <ciso646>
 #include <stdexcept>
+#include <algorithm>
 
 //Project Includes
 #include "bet.hpp"
@@ -30,7 +31,9 @@ namespace gambling
 {
     namespace detail
     {
-        TotalisatorImpl::TotalisatorImpl( void )
+        TotalisatorImpl::TotalisatorImpl( void ) : m_win_commission( 0 ),
+            m_place_commission( 0 ),
+            m_place_winner_boundary( 0 )
         {
             return;
         }
