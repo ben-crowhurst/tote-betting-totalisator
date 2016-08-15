@@ -4,6 +4,7 @@
 //Project Includes
 #include "bet.hpp"
 #include "race.hpp"
+#include "settings.hpp"
 #include "totalisator.hpp"
 #include "detail/totalisator_impl.hpp"
 
@@ -12,6 +13,7 @@
 //System Namespaces
 using std::vector;
 using std::unique_ptr;
+using std::shared_ptr;
 
 //Project Namespaces
 using gambling::detail::TotalisatorImpl;
@@ -20,11 +22,6 @@ using gambling::detail::TotalisatorImpl;
 
 namespace gambling
 {
-    Totalisator::Totalisator( void ) : m_pimpl( new TotalisatorImpl )
-    {
-        return;
-    }
-    
     Totalisator::~Totalisator( void )
     {
         return;
@@ -36,5 +33,17 @@ namespace gambling
         m_pimpl->validate( race, bets );
         m_pimpl->generate_race_results( race );
         m_pimpl->calculate_dividends( race, bets );
+    }
+    
+    shared_ptr< Totalisator > Totalisator::create( const Settings& settings )
+    {
+        return shared_ptr< Totalisator >( new Totalisator( settings ) );
+    }
+    
+    Totalisator::Totalisator( const Settings& settings ) : m_pimpl( new TotalisatorImpl )
+    {
+        m_pimpl->m_win_commission = settings.win_commission;
+        m_pimpl->m_place_commission = settings.place_commission;
+        m_pimpl->m_place_winner_boundary = settings.place_winner_boundary;
     }
 }

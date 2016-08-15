@@ -21,13 +21,14 @@ namespace gambling
     //Forward Declarations
     struct Bet;
     struct Race;
+    struct Settings;
     
     namespace detail
     {
         class TotalisatorImpl;
     }
     
-    class Totalisator
+    class Totalisator final
     {
         public:
             //Friends
@@ -35,12 +36,12 @@ namespace gambling
             //Definitions
             
             //Constructors
-            Totalisator( void );
-            
             virtual ~Totalisator( void );
             
             //Functionality
             void run( Race& race, const std::vector< Bet >& bets );
+            
+            static std::shared_ptr< Totalisator > create( const Settings& settings = { } );
             
             //Getters
             
@@ -73,6 +74,8 @@ namespace gambling
             //Definitions
             
             //Constructors
+            Totalisator( const Settings& settings );
+            
             Totalisator( const Totalisator& original ) = delete;
             
             //Functionality

@@ -4,6 +4,7 @@
 
 //System Includes
 #include <vector>
+#include <cstdint>
 
 //Project Includes
 
@@ -53,6 +54,11 @@ namespace gambling
                 //Operators
                 
                 //Properties
+                uint8_t m_win_commission;
+                
+                uint8_t m_place_commission;
+                
+                unsigned int m_place_winner_boundary;
                 
             protected:
                 //Friends
